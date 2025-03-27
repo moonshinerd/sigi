@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     "sigi.apps.servicos",
     "sigi.apps.servidores",
     "sigi.apps.utils",
+    "dashboard",
 ]
 
 MIDDLEWARE = [
@@ -128,9 +129,10 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.media",
+                "django.template.context_processors.request",
                 "djbs.context_processors.sets",
+                "dashboard.context_processors.dashboard",
                 "sigi.apps.utils.context_processors.site_context",
-                "sigi.apps.home.context_processors.dashboard",
             ],
         },
     },
@@ -254,8 +256,8 @@ DJBSTHEME = {
     "MENU_FILE": BASE_DIR / "menu_conf.yaml",
     "CHECK_AS_SWITCH": True,
     "FILTER_STYLE": djbs_constants.FILTER_STYLE_CLASSIC,
-    "FIELDSET_STYLE": djbs_constants.STYLE_CARD,
-    "INLINESET_STYLE": djbs_constants.STYLE_CARD,
+    "FIELDSET_STYLE": djbs_constants.STYLE_TAB,
+    "INLINESET_STYLE": djbs_constants.STYLE_TAB,
     "BADGERIZE_FACETS": True,
 }
 

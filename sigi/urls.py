@@ -19,7 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, RedirectView
+from dashboard.registry import dashboard
+
+admin.site.site_header = admin.site.site_title = _("SIGI")
+admin.site.index_title = _("Sistema de Informações Gerenciais do Interlegis")
 
 urlpatterns = [
     path("casas/", include("sigi.apps.casas.urls")),
@@ -33,6 +38,7 @@ urlpatterns = [
     path("admin/ocorrencias/", include("sigi.apps.ocorrencias.admin_urls")),
     path("admin/utils/", include("sigi.apps.utils.admin_urls")),
     path("admin/", admin.site.urls),
+    path("dash/", dashboard.urls),
     path(
         "api/",
         RedirectView.as_view(pattern_name="swagger-ui", permanent=False),
